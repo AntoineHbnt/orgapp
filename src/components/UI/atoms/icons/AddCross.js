@@ -1,8 +1,13 @@
-import { StyledSvg } from "./IconManager";
+import { styled } from "../../../../Themes";
 
-export const AddCrossIcon = ({type}) => {
+const StyledSvg = styled("svg", {
+  width: "8px",
+  height: "8px",
+});
+
+export const AddCrossIcon = () => {
   return (
-    <StyledSvg type={type}>
+    <StyledSvg>
       <path d="M4.75 0H3.25V8H4.75V0Z" />
       <path d="M8 4.75V3.25L0 3.25V4.75H8Z" />
     </StyledSvg>
