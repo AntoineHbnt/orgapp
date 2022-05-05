@@ -2,8 +2,8 @@ import React from "react";
 import { styled } from "../../../../Themes";
 
 const StyledButton = styled("div", {
-  width: "min-content",
-  height: "min-content",
+  width: "fit-content",
+  height: "fit-content",
   boxSizing: "border-box",
   display: "flex",
   flexDirection: "row",
@@ -42,15 +42,15 @@ const StyledButton = styled("div", {
 const StyledLabel = styled("span", {
   fontStyle: "normal",
   fontWeight: 700,
-  fontSize: "0.75rem",
-  lineHeight: "0.75rem",
+  fontSize: "$6",
+  lineHeight: "$6",
 });
 
-const Button = ({ label, type, icon }) => {
+const Button = ({ label, type, icon, fontSize }) => {
   return (
     <StyledButton type={type}>
       {icon && icon}
-      <StyledLabel>{label}</StyledLabel>
+      <StyledLabel css={fontSize ? { fontSize, lineHeight: fontSize } : {}}>{label}</StyledLabel>
     </StyledButton>
   );
 };

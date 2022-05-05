@@ -3,16 +3,6 @@ import { styled } from "../../../../Themes";
 const StyledSvg = styled("svg", {
   width: "83.5px",
   height: "18px",
-  variants: {
-    type: {
-      primary: {
-        fill: '$primary'
-      },
-      secondary: {
-        fill: '$secondary'
-      }
-    }
-  }
 });
 
 export const Logo = ({type}) => {
