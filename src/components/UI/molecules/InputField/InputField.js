@@ -20,11 +20,13 @@ const InputField = ({
   onChange,
 }) => {
   const [focus, setFocus] = useState(false);
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [inputPasswordType, setInputPasswordType] = useState(type);
 
-  const handlePassword = () => {
-    return showPassword ? "text" : "password"
-  }
+  useEffect(() => {
+    console.log(showPassword);
+    setInputPasswordType(showPassword ? "text" : "password")
+  }, [showPassword]);
 
   return (
     <Wrapper>
@@ -35,7 +37,7 @@ const InputField = ({
         focus={focus}
       >
         <StyledInput
-          type={type == "password" ? handlePassword() : type}
+          type={type == "password" ? inputPasswordType : type}
           placeholder={placeHolder}
           value={value}
           disabled={disabled}
@@ -43,10 +45,12 @@ const InputField = ({
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
         />
-        <Icon>
+        <Icon onClick={() => !disabled && setShowPassword(showPassword => !showPassword)}>
           {valid && type != "password" && <ValidateIcon />}
           {error && type != "password" && <ErrorIcon />}
-          {type == "password" && <PasswordIcon/>}
+          {type == "password" && (
+            <PasswordIcon showPassword={showPassword}/>
+          )}
         </Icon>
       </Container>
       {error && <StyledError>{error}</StyledError>}
