@@ -16,7 +16,7 @@ export const Container = styled("div", {
   boxSizing: "border-box",
   padding: "12px 18px",
   border: "3px solid $black50",
-  borderRadius: "8px",
+  borderRadius: "$1",
   color: "$black25",
   transition: '.1s all ease',
   "& svg": {

@@ -37,7 +37,7 @@ const InputField = ({
         focus={focus}
       >
         <StyledInput
-          type={type == "password" ? inputPasswordType : type}
+          type={type === "password" ? inputPasswordType : type}
           placeholder={placeHolder}
           value={value}
           disabled={disabled}
@@ -46,9 +46,9 @@ const InputField = ({
           onBlur={() => setFocus(false)}
         />
         <Icon onClick={() => !disabled && setShowPassword(showPassword => !showPassword)}>
-          {valid && type != "password" && <ValidateIcon />}
-          {error && type != "password" && <ErrorIcon />}
-          {type == "password" && (
+          {valid && type !== "password" && <ValidateIcon />}
+          {error && type !== "password" && <ErrorIcon />}
+          {type === "password" && (
             <PasswordIcon showPassword={showPassword}/>
           )}
         </Icon>

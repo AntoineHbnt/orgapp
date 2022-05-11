@@ -50,7 +50,9 @@ export const { styled, css } = createStitches({
     },
     borderWidths: {},
     borderStyles: {},
-    radii: {},
+    radii: {
+      1: '0.5rem'
+    },
     shadows: {},
     zIndices: {},
     transitions: {
