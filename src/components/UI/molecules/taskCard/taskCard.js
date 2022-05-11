@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckListCount } from "../../atoms/CheckListCount/CheckListCount";
 import Tag from "../../atoms/Tag/Tag";
-import { Card, CardContent, CardLabel, PictureContainer, TagRow } from "./taskCard.styles";
+import { Card, CardContent, CardLabel, PictureContainer, TagRow } from "./TaskCard.styles";
 
 const Tags = ({ tags }) => {
   return tags.map(({ label, color }) => {
@@ -26,7 +26,7 @@ const TaskCard = ({ label, tags, checkList, picture }) => {
       <CardContent>
         {tags && <TagList tags={tags} />}
         <CardLabel>{label}</CardLabel>
-        {checkList && <CheckListCount done={0} total={10}/>}
+        {checkList && <CheckListCount checkList={checkList} />}
       </CardContent>
     </Card>
   );
