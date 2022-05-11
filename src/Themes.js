@@ -4,9 +4,13 @@ export const { styled, css } = createStitches({
   theme: {
     colors: {
       black85: "#262626",
-      black50: "#666666",
-      black25: "#808080",
+      black70: "#494949",
+      black65: "#555555",
+      black60: "#666666",
+      black50: "#808080",
+      black25: "#B5B5B5",
       offWhite: "#F5F1EF",
+      offWhiteHover: "#E9E4E2",
       validate: "#1FAD66",
       error: "#E05252",
       primary: "$black85",
@@ -51,7 +55,8 @@ export const { styled, css } = createStitches({
     borderWidths: {},
     borderStyles: {},
     radii: {
-      1: '0.5rem'
+      1: '0.5rem',
+      2: '0.25rem'
     },
     shadows: {},
     zIndices: {},

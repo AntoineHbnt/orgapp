@@ -1,12 +1,12 @@
 import { CheckBoxIcon } from "../icons/CheckBox";
 import { Container, StyledSpan } from "./CheckListCount.styles";
 
-export const CheckListCount = ({ done, total }) => {
+export const CheckListCount = ({ checkList }) => {
   return (
-    <Container>
+    <Container css={{marginTop: '8px'}}>
       <CheckBoxIcon />
       <StyledSpan>
-          {`${done}/${total}`}
+          {`${checkList.done.length}/${checkList.done.length + checkList.todo.length}`}
       </StyledSpan>
     </Container>
   );

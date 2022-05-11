@@ -1,3 +1,5 @@
+import { styled } from "../../../../Themes";
+
 export const StyledButton = styled("div", {
   width: "fit-content",
   height: "fit-content",
