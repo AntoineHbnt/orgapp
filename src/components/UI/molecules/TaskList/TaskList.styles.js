@@ -5,7 +5,7 @@ export const Container = styled("div", {
   display: "flex",
   justifyContent: "center",
   padding: "$2",
-  gap: "$3",
+  gap: "$2",
   width: "240px",
   height: "fit-content",
   backgroundColor: "$black60",

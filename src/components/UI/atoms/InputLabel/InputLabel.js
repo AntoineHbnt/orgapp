@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import { Input, Label } from './InputLabel.styles';
+import React, { useState } from "react";
+import { Container, Input, Label } from "./InputLabel.styles";
 
-const InputLabel = ({value, setValue}) => {
-    const [isFocus, setIsFocus] = useState(false);
+const InputLabel = ({ value, setValue, css }) => {
+  const [isFocus, setIsFocus] = useState(false);
 
-    return (
-        isFocus ? 
-        <Input type="text" value={value} onChange={e => setValue(e.target.value)} onBlur={() => setIsFocus(false)} onKeyPress={(e) => e.key === 'Enter' && setIsFocus(false)} autoFocus/> 
-        : 
-        <Label onClick={() => setIsFocus(true)}>{value}</Label>
-    );
+  const content = (
+    isFocus ? (
+      <Input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={() => setIsFocus(false)}
+        onKeyPress={(e) => e.key === "Enter" && setIsFocus(false)}
+        autoFocus
+      />
+    ) : (
+      <Label css={css} onClick={() => setIsFocus(true)}>
+        {value}
+      </Label>
+    )
+  );
+
+  return <Container>{content}</Container>;
 };
 
 export default InputLabel;

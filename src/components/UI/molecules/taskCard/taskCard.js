@@ -4,8 +4,8 @@ import Tag from "../../atoms/Tag/Tag";
 import { Card, CardContent, CardLabel, PictureContainer, TagRow } from "./TaskCard.styles";
 
 const Tags = ({ tags }) => {
-  return tags.map(({ label, color }) => {
-    return <Tag label={label} color={color} />;
+  return tags.map(({ label, color }, index) => {
+    return <Tag key={index} label={label} color={color} />;
   });
 };
 

@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { taskLists } from "../../../../data";
-import Button from "../../atoms/Button/Button";
-import { AddCrossIcon } from "../../atoms/icons/AddCross";
+import AddListButton from "../../molecules/AddListButton/AddListButton";
 import TaskList from "../../molecules/TaskList/TaskList";
-import { AddButton, ButtonLabel, Container } from "./TaskListArray.styles";
+import { Container } from "./TaskListArray.styles";
 
 const TaskListArray = () => {
+  const [isFocus, setIsFocus] = useState(false);
+
+  const array = taskLists.map((tasksList) => (
+    <TaskList key={tasksList.id} tasks={tasksList.tasks} />
+  ));
+
   return (
     <Container>
-      {taskLists.map((tasksList) => {
-        return <TaskList key={tasksList.id} tasks={tasksList.tasks} />;
-      })}
-      <Button icon={<AddCrossIcon/>} label="Ajouter une liste" type="secondary"/>
+      {array}
+      <AddListButton />
     </Container>
   );
 };

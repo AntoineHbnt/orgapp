@@ -3,11 +3,11 @@ import { StyledButton, StyledLabel } from "./Button.styles";
 
 
 
-const Button = ({ label, type, icon, fontSize }) => {
+const Button = ({ label, type, icon, css, onClick }) => {
   return (
-    <StyledButton type={type}>
+    <StyledButton type={type} css={css} onClick={onClick}>
       {icon && icon}
-      <StyledLabel css={fontSize ? { fontSize, lineHeight: fontSize } : {}}>{label}</StyledLabel>
+      <StyledLabel>{label}</StyledLabel>
     </StyledButton>
   );
 };

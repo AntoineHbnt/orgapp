@@ -1,17 +1,21 @@
+import { keyframes } from "@stitches/react";
 import { styled } from "../../../../Themes";
 
+ 
+
 export const StyledButton = styled("div", {
-  width: "fit-content",
-  height: "fit-content",
-  boxSizing: "border-box",
-  display: "flex",
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  padding: "12px 18px",
   gap: "0.375rem",
-  backgroundColor: "$secondary",
+  display: "flex",
   borderRadius: "$1",
+  boxSizing: "border-box",
+  width: "fit-content",
+  height: "fit-content",
+  padding: "12px 18px",
+  backgroundColor: "$secondary",
+  cursor: 'pointer',
   color: "$primary",
 
   "& > svg": {
@@ -44,3 +48,4 @@ export const StyledLabel = styled("span", {
   fontSize: "$6",
   lineHeight: "$6",
 });
+

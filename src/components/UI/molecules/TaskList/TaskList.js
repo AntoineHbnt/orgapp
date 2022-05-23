@@ -15,7 +15,15 @@ import {
 const TaskList = ({ tasks }) => {
   const [title, setTitle] = useState("Saisissez le titre de la liste");
 
-  
+  const tasksArray = tasks.map(({ label, picture, tags, checkList }, index) => (
+    <TaskCard
+      key={index}
+      label={label}
+      picture={picture}
+      tags={tags}
+      checkList={checkList}
+    />
+  ));
 
   return (
     <Container>
@@ -31,11 +39,7 @@ const TaskList = ({ tasks }) => {
           <DotMenuIcon />
         </Button>
       </Header>
-      <List>
-        {tasks.map(({label, picture, tags, checkList}, index) => {
-          return <TaskCard key={index} label={label} picture={picture} tags={tags} checkList={checkList} />;
-        })}
-      </List>
+      <List>{tasksArray}</List>
       <Footer>
         <Button css={{ padding: "$1 $2 $1 $2", width: "100%" }}>
           <AddCrossIcon />
