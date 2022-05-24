@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeTasksListLabel } from "../../../../features/tasks/tasksLists/tasksListsSlice";
 import { AddCrossIcon } from "../../atoms/icons/AddCross";
 import { DotMenuIcon } from "../../atoms/icons/DotMenu";
 import InputLabel from "../../atoms/InputLabel/InputLabel";
@@ -12,8 +14,9 @@ import {
   List,
 } from "./TaskList.styles";
 
-const TaskList = ({ tasks }) => {
-  const [title, setTitle] = useState("Saisissez le titre de la liste");
+const TaskList = ({ id, tasks, label }) => {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState(label ? label : "Saisissez le titre de la liste");
 
   const tasksArray = tasks.map(({ label, picture, tags, checkList }, index) => (
     <TaskCard
@@ -25,10 +28,15 @@ const TaskList = ({ tasks }) => {
     />
   ));
 
+  const handleChange = (e) => {
+    setTitle(() => e.target.value);
+    dispatch(changeTasksListLabel({id, label: e.target.value}));
+  }
+
   return (
     <Container>
       <Header>
-        <InputLabel value={title} setValue={setTitle} />
+        <InputLabel value={title} onChange={e => handleChange(e)} />
         <Button
           css={{
             aspectRatio: "1/1",

@@ -12,4 +12,5 @@ const store = configureStore({
     }, 
     composedEnhancer 
 });
+
 export default store;

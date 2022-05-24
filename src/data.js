@@ -2,6 +2,7 @@ export const taskLists = [
   {
     id: 1,
     position: 0,
+    label: 'A faire',
     tasks: [
       {
         id: 10,
@@ -30,6 +31,7 @@ export const taskLists = [
   {
     id: 2,
     position: 1,
+    label: 'En cour',
     tasks: [
       {
         id: 21,

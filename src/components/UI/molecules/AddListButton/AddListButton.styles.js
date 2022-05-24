@@ -3,7 +3,7 @@ import { styled } from "../../../../Themes";
 
 
 
-export const Container = styled("div", {
+export const Container = styled("form", {
   flexDirection: "column",
   display: "flex",
   overflow: 'hidden',

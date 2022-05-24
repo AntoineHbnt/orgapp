@@ -3,7 +3,7 @@ import { styled } from "../../../../Themes";
 
  
 
-export const StyledButton = styled("div", {
+export const StyledButton = styled("button", {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
@@ -23,7 +23,7 @@ export const StyledButton = styled("div", {
   },
 
   variants: {
-    type: {
+    style: {
       secondary: {
         backgroundColor: "$primary",
         color: "$secondary",

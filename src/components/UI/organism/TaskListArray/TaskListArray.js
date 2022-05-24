@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { taskLists } from "../../../../data";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import AddListButton from "../../molecules/AddListButton/AddListButton";
 import TaskList from "../../molecules/TaskList/TaskList";
 import { Container } from "./TaskListArray.styles";
 
 const TaskListArray = () => {
-  const [isFocus, setIsFocus] = useState(false);
+  const tasksLists = useSelector((state) => state.tasksLists)
 
-  const array = taskLists.map((tasksList) => (
-    <TaskList key={tasksList.id} tasks={tasksList.tasks} />
+  const array = tasksLists.map((tasksList) => (
+    <TaskList key={tasksList.id} id={tasksList.id} label={tasksList.label} tasks={tasksList.tasks} />
   ));
 
   return (
