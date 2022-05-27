@@ -3,13 +3,14 @@ import { styled } from "../../../../Themes";
 export const Container = styled("div", {
   flexDirection: "column",
   display: "flex",
-  justifyContent: "center",
+  alignItems: "center",
+  justifyContent: 'space-between',
   padding: "$2",
-  gap: "$2",
   width: "240px",
   height: "fit-content",
   backgroundColor: "$black60",
   borderRadius: "$1",
+  boxSizing: 'border-box'
 });
 
 export const Header = styled("div", {
@@ -18,6 +19,7 @@ export const Header = styled("div", {
   flexDirection: "row",
   justifyContent: "space-between",
   width: "100%",
+  marginBottom: '$1'
 });
 
 export const Footer = styled("div", {
@@ -55,6 +57,8 @@ export const ButtonLabel = styled("span", {
 
 export const List = styled("div", {
     flexDirection: 'column',
+    width: '100%',
     display: 'flex',
-    gap: '$2'
+    gap: '$2',
+    marginBottom: '$2',
 })

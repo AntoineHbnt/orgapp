@@ -4,9 +4,10 @@ export const Card = styled("div", {
   flexDirection: "column",
   display: "flex",
   borderRadius: "$1",
-  width: "240px",
+  width: "100%",
   backgroundColor: "$secondary",
   transition: '.1s ease-in-out',
+  boxSizing: 'border-box',
   "&:hover": {
     backgroundColor: "$offWhiteHover",
   },

@@ -1,4 +1,3 @@
-import { keyframes } from "@stitches/react";
 import { styled } from "../../../../Themes";
 
  
@@ -17,6 +16,7 @@ export const StyledButton = styled("button", {
   backgroundColor: "$secondary",
   cursor: 'pointer',
   color: "$primary",
+  border: '0px',
 
   "& > svg": {
     fill: "$primary",

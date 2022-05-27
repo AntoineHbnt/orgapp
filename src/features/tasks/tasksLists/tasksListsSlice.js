@@ -14,8 +14,6 @@ const tasksListsSlice = createSlice({
       const {id, label} = action.payload
       const tasksList = state.find((elem) => elem.id === id) 
 
-      console.log(id, label);
-
       if(tasksList){
         tasksList.label = label
       }
@@ -31,9 +29,20 @@ const tasksListsSlice = createSlice({
 
       localStorage.setItem('tasksLists', JSON.stringify(state))
     },
+    addTask(state, action) {
+      const {id, task} = action.payload;
+      const list = state.find((elem) => elem.id === id)
+      console.log(id, task);
+      list.tasks.push({
+        ...task,
+        id: nanoid()
+      })
+
+      localStorage.setItem('tasksLists', JSON.stringify(state))
+    }
   },
 });
 
-export const { addTaskList, getTasksLists, changeTasksListLabel } = tasksListsSlice.actions;
+export const { addTaskList, addTask, getTasksLists, changeTasksListLabel } = tasksListsSlice.actions;
 
 export default tasksListsSlice.reducer;
