@@ -4,7 +4,7 @@ export const Form = styled("form", {
   flexDirection: "column",
   display: "flex",
   width: "100%",
-  gap: "$2",
+  gap: "$8",
   boxSizing: "border-box",
 });
 

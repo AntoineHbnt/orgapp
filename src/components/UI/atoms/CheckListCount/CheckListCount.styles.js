@@ -1,14 +1,26 @@
 import { styled } from "../../../../Themes";
 
 export const Container = styled("div", {
+    position: 'absolute',
+    zIndex: '999',
+    bottom: '-$8',
+    right: '0',
     flexDirection: 'row',
-    display: 'flex',
     alignItems: 'center',
+    display: 'flex',
+    boxShadow: '$default',
+    border: '3px solid #000',
     width: 'fit-content',
-    gap: '4px'
+    height: 'min-content',
+    padding: 'calc($4 - 3px) calc($8 - 3px)',
+    backgroundColor: '$white',
+    boxSizing: 'border-box',
+    gap: '4px',
 })
 
 export const StyledSpan = styled("span", {
-    fontSize: '$6',
-    color: '$black25'
+    fontSize: '$12',
+    fontWeight: '700',
+    lineHeight: '$14',
+    color: '$black'
 })

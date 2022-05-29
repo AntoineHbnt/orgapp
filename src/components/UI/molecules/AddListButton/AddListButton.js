@@ -31,7 +31,6 @@ const AddListButton = () => {
     <Button
       icon={<AddCrossIcon />}
       label="Ajouter une autre liste"
-      style="secondary"
       css={{ width: "240px", justifyContent: "flex-start" }}
       onClick={() => setFocus(focus => !focus)}
     />

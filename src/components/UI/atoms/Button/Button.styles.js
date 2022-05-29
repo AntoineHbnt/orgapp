@@ -8,37 +8,17 @@ export const StyledButton = styled("button", {
   alignItems: "center",
   gap: "0.375rem",
   display: "flex",
-  borderRadius: "$1",
+  alignItems: 'center',
   boxSizing: "border-box",
   width: "fit-content",
   height: "fit-content",
-  padding: "12px 18px",
   backgroundColor: "$secondary",
   cursor: 'pointer',
   color: "$primary",
-  border: '0px',
+  border: '3px solid #000',
 
   "& > svg": {
     fill: "$primary",
-  },
-
-  variants: {
-    style: {
-      secondary: {
-        backgroundColor: "$primary",
-        color: "$secondary",
-        "& > svg": {
-          fill: "$secondary",
-        },
-      },
-      tertiary: {
-        outline: "3px solid $primary",
-        outlineOffset: "-3px",
-        "& > svg": {
-          fill: "$primary",
-        },
-      },
-    },
   },
 });
 

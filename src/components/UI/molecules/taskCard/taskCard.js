@@ -1,7 +1,14 @@
 import React from "react";
 import { CheckListCount } from "../../atoms/CheckListCount/CheckListCount";
 import Tag from "../../atoms/Tag/Tag";
-import { Card, CardContent, CardLabel, PictureContainer, TagRow } from "./TaskCard.styles";
+import {
+  Card,
+  CardContent,
+  CardLabel,
+  CardOption,
+  PictureContainer,
+  TagRow,
+} from "./TaskCard.styles";
 
 const Tags = ({ tags }) => {
   return tags.map(({ label, color }, index) => {
@@ -17,16 +24,16 @@ const TagList = ({ tags }) => {
   );
 };
 
-
-
 const TaskCard = ({ label, tags, checkList, picture }) => {
   return (
     <Card>
-      {picture && <PictureContainer src={picture}/>}
+      {picture && <PictureContainer src={picture} />}
       <CardContent>
-        {tags && <TagList tags={tags} />}
+        <CardOption>
+          {tags && <TagList tags={tags} />}
+          {checkList && <CheckListCount checkList={checkList} />}
+        </CardOption>
         <CardLabel>{label}</CardLabel>
-        {checkList && <CheckListCount checkList={checkList} />}
       </CardContent>
     </Card>
   );
