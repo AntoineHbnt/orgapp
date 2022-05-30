@@ -123,6 +123,7 @@ export const { styled, css } = createStitches({
     },
     shadows: {
       default: "4px 4px 0px #000000",
+      active: "2px 2px 0px #000000",
     },
     zIndices: {},
     transitions: {},

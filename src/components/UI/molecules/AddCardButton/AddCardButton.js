@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { Form, TextArea, Row, TextContainer } from "./AddCardButton.styles";
+import React, { useEffect, useState } from "react";
+import {
+  Form,
+  TextArea,
+  Row,
+  TextContainer,
+  Container,
+} from "./AddCardButton.styles";
 
 import Button from "../../atoms/Button/Button";
 import { useDispatch } from "react-redux";
@@ -10,6 +16,7 @@ const AddCardButton = ({ listId }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [label, setLabel] = useState("");
   const dispatch = useDispatch();
+  const list = document.getElementById(listId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,12 +24,20 @@ const AddCardButton = ({ listId }) => {
     setLabel(() => "");
   };
 
+  const buttonStyle = {
+    border: "0",
+    opacity: '0',
+    lineHeight: '$14',
+    padding: "$4 $8",
+    fontSize: "$12",
+  };
+
   const AddButton = () => (
     <Button
-      css={{ padding: "$4 $8", fontSize: '$12'}}
+      css={buttonStyle}
       label="Ajouter une carte"
       onClick={() => setIsFocus(() => true)}
-      icon={<AddCrossIcon/>}
+      icon={<AddCrossIcon />}
     />
   );
 
@@ -42,7 +57,11 @@ const AddCardButton = ({ listId }) => {
     </Form>
   );
 
-  return isFocus ? <FormContainer /> : <AddButton />;
+  return (
+    <Container id={listId} className={isFocus ? "form" : "button"}>
+      {isFocus ? <FormContainer /> : <AddButton />}
+    </Container>
+  );
 };
 
 export default AddCardButton;
