@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   TextArea,
@@ -16,7 +16,6 @@ const AddCardButton = ({ listId }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [label, setLabel] = useState("");
   const dispatch = useDispatch();
-  const list = document.getElementById(listId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,8 +25,8 @@ const AddCardButton = ({ listId }) => {
 
   const buttonStyle = {
     border: "0",
-    opacity: '0',
-    lineHeight: '$14',
+    opacity: "0",
+    lineHeight: "$14",
     padding: "$4 $8",
     fontSize: "$12",
   };
@@ -41,25 +40,27 @@ const AddCardButton = ({ listId }) => {
     />
   );
 
-  const FormContainer = () => (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <TextContainer>
-        <TextArea value={label} onChange={(e) => setLabel(e.target.value)} />
-      </TextContainer>
-      <Row>
-        <Button label="Ajouter une carte" type={"submit"} />
-        <Button
-          label="Annuler"
-          style="secondary"
-          onClick={() => setIsFocus(() => false)}
-        />
-      </Row>
-    </Form>
-  );
-
   return (
     <Container id={listId} className={isFocus ? "form" : "button"}>
-      {isFocus ? <FormContainer /> : <AddButton />}
+      {isFocus ? (
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <TextContainer>
+            <TextArea
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+            />
+          </TextContainer>
+          <Row>
+            <Button label="Ajouter une carte" type={"submit"} />
+            <Button
+              label="Annuler"
+              onClick={() => setIsFocus(() => false)}
+            />
+          </Row>
+        </Form>
+      ) : (
+        <AddButton />
+      )}
     </Container>
   );
 };

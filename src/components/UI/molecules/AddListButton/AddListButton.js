@@ -24,7 +24,7 @@ const AddListButton = () => {
       </InputContainer>
       <ButtonRow>
         <Button label="Ajouter une liste" type={"submit"}/>
-        <Button label="Annuler"  style="secondary" onClick={() => setFocus(focus => !focus)}/>
+        <Button label="Annuler"  onClick={() => setFocus(focus => !focus)}/>
       </ButtonRow>
     </Container>
   ) : (

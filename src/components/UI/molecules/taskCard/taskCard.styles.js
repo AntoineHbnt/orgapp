@@ -1,7 +1,26 @@
+import { keyframes } from "@stitches/react";
 import { styled } from "../../../../Themes";
+
+const showCard = keyframes({
+  '0%':{
+    height: '0px',
+    opacity: '0',
+    transform: 'scale(0)'
+  },
+  '75%':{
+    opacity: '50%',
+  },
+  '100%':{
+    height: '32px',
+    opacity: '100%',
+    transform: 'scale(1)'
+  },
+
+})
 
 export const Card = styled("div", {
   flexDirection: "column",
+  animation: `.25s ease ${showCard}`,
   display: "flex",
   width: "100%",
   transition: ".1s ease-in-out",
