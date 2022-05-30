@@ -2,9 +2,6 @@
   "name": "orgapp",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.15.0"
-  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@stitches/react": "^1.2.8",
