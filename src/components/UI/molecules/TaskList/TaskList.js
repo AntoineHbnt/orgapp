@@ -40,7 +40,7 @@ const TaskList = ({ id, tasks, label }) => {
   return (
     <Container>
       <Header>
-        <InputLabel value={title} css={{fontWeight: '700'}} onChange={e => handleChange(e)} />
+        <InputLabel value={title} css={{fontWeight: '700', whiteSpace:'nowrap'}} onChange={e => handleChange(e)} />
         <Button
           css={{
             aspectRatio: "1/1",

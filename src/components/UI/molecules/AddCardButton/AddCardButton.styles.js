@@ -3,8 +3,8 @@ import { styled } from "../../../../Themes";
 
 export const showForm = keyframes({
   "0%": {
-    width: "112px",
-    height: "22px",
+    width: "114px",
+    height: "28px",
   },
   "30%": {
     width: "100%",
@@ -20,10 +20,10 @@ const showButton = keyframes({
     height: "96px",
   },
   "30%": {
-    height: "22px",
+    height: "28px",
   },
   "100%": {
-    width: "114px",
+    width: "116px",
   },
 });
 

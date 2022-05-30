@@ -1,4 +1,21 @@
+import { keyframes } from "@stitches/react";
 import { styled } from "../../../../Themes";
+
+const showList = keyframes({
+  '0%':{
+    width: '0px',
+    opacity: '0',
+    transform: 'scale(0)'
+  },
+  '75%':{
+    opacity: '50%',
+  },
+  '100%':{
+    width: '240px',
+    opacity: '100%',
+    transform: 'scale(1)'
+  },
+})
 
 export const Container = styled("div", {
   flexDirection: "column",
@@ -11,7 +28,8 @@ export const Container = styled("div", {
   boxSizing: "border-box",
   border: "3px solid #000",
   borderRadius: '$4',
-  boxShadow: '$default'
+  boxShadow: '$default',
+  animation: `.25s ease ${showList}`
 });
 
 export const Header = styled("div", {
