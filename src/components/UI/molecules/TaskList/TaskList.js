@@ -4,7 +4,7 @@ import { changeTasksListLabel } from "../../../../features/tasks/tasksLists/task
 import { DotMenuIcon } from "../../atoms/icons/DotMenu";
 import InputLabel from "../../atoms/InputLabel/InputLabel";
 import AddCardButton from "../AddCardButton/AddCardButton";
-import TaskCard from "../TaskCard/TaskCard";
+import TaskCard from "../TaskCard/TaskCard.js";
 import {
   Button,
   Container,
