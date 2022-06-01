@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { styled } from "../../../../Themes";
 
 const StyledSvg = styled("svg", {
@@ -6,10 +6,10 @@ const StyledSvg = styled("svg", {
   width: "8px",
 });
 
-const TrashIcon = () => {
+const TrashIcon = ({css}) => {
 
   return (
-    <StyledSvg className="trashIcon">
+    <StyledSvg className="trashIcon" css={css}>
       <path
         className="trash"
         d="M0 1.5V3H0.5V8H6.5V3H7V1.5H0ZM3 7H2V2.5H3V7ZM5 7H4V2.5H5V7Z"

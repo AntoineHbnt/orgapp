@@ -17,6 +17,12 @@ const showCard = keyframes({
   },
 });
 
+export const Row = styled("div", {
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '$4'
+})
+
 export const Card = styled("div", {
   flexDirection: "column",
   animation: `.25s ease ${showCard}`,
@@ -49,7 +55,7 @@ export const CardHeader = styled("label", {
   color: "$primary",
   height: "$32",
   boxSizing: "border-box",
-  fontSize: "$14",
+  fontSize: "$16",
   fontWeight: "700",
   padding: "6px",
   backgroundColor: "$white",
@@ -110,4 +116,7 @@ export const settingsButtonStyle = {
   "&:hover": {
     backgroundColor: "rgba(0,0,0,0.05)",
   },
+  "& > svg": {
+    transform: 'scale(1.5)'
+  }
 };
