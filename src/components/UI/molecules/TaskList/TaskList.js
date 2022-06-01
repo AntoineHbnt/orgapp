@@ -21,7 +21,7 @@ const TaskList = ({ listId, tasks, label }) => {
     <List>
       {tasks.map(({ id, label, picture, tags, checkList }, index) => (
         <TaskCard
-          key={index}
+          key={id}
           listId={listId}
           taskId={id}
           label={label}

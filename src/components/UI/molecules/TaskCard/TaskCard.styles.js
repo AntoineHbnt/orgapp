@@ -76,13 +76,13 @@ export const PictureContainer = styled("img", {
 //SETTING MODAL
 
 const showModalBackground = keyframes({
-  '0%': {
-    opacity: '0'
+  "0%": {
+    opacity: "0",
   },
-  '100%': {
-    opacity: '100%'
-  }
-})
+  "100%": {
+    opacity: "100%",
+  },
+});
 
 export const ModalBackground = styled("div", {
   position: "fixed",
@@ -94,3 +94,20 @@ export const ModalBackground = styled("div", {
   animation: `.1s ease-in ${showModalBackground}`,
   backgroundColor: "rgba(0,0,0,0.45)",
 });
+
+export const cardModalStyle = {
+  zIndex: "20",
+  cursor: "default",
+  "&:hover": { transform: "translate(0)" },
+};
+
+export const settingsButtonStyle = {
+  aspectRatio: "1/1",
+  display: "block",
+  width: "fit-content",
+  border: "0px",
+  transition: "all .1s ease-in",
+  "&:hover": {
+    backgroundColor: "rgba(0,0,0,0.05)",
+  },
+};

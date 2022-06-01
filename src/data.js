@@ -6,7 +6,6 @@ export const taskLists = [
     tasks: [
       {
         id: 10,
-        position: 0,
         label: "ceci est une tache",
         tags: [{ label: "tag1", color: "#fff" }],
         picture:
@@ -18,7 +17,6 @@ export const taskLists = [
       },
       {
         id: 11,
-        position: 1,
         label: "ceci est une tache",
         tags: [{ label: "tag1", color: "#fff" }],
         checkList: {
@@ -35,7 +33,6 @@ export const taskLists = [
     tasks: [
       {
         id: 21,
-        position: 1,
         label: "ceci est une tache",
         tags: [{ label: "tag1", color: "#fff" }],
         checkList: {
@@ -45,7 +42,6 @@ export const taskLists = [
       },
       {
         id: 20,
-        position: 0,
         label: "ceci est une tache",
         tags: [{ label: "tag1", color: "#fff" }],
         picture:
@@ -57,7 +53,6 @@ export const taskLists = [
       },
       {
         id: 22,
-        position: 0,
         label: "ceci est une tache",
         tags: [{ label: "tag1", color: "#fff" }],
         picture:
