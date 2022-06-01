@@ -13,15 +13,17 @@ import {
   List,
 } from "./TaskList.styles";
 
-const TaskList = ({ id, tasks, label }) => {
+const TaskList = ({ listId, tasks, label }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(label ? label : "Saisissez le titre de la liste");
 
   const tasksArray = tasks.length > 0 && (
     <List>
-      {tasks.map(({ label, picture, tags, checkList }, index) => (
+      {tasks.map(({ id, label, picture, tags, checkList }, index) => (
         <TaskCard
           key={index}
+          listId={listId}
+          taskId={id}
           label={label}
           picture={picture}
           tags={tags}
@@ -34,7 +36,7 @@ const TaskList = ({ id, tasks, label }) => {
 
   const handleChange = (e) => {
     setTitle(() => e.target.value);
-    dispatch(changeTasksListLabel({id, label: e.target.value}));
+    dispatch(changeTasksListLabel({listId, label: e.target.value}));
   }
 
   return (
@@ -53,7 +55,7 @@ const TaskList = ({ id, tasks, label }) => {
       </Header>
       {tasksArray}
       <Footer>
-        <AddCardButton listId={id} />
+        <AddCardButton listId={listId} />
       </Footer>
     </Container>
   );

@@ -3,12 +3,11 @@ import { styled } from "./Themes";
 
 const Container = styled("div", {
   fontFamily: "$glory",
-  width: "100vw",
-  height: "100vh",
+  width: "100%",
+  height: "100%",
   backgroundColor: "$secondary",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  margin: '$32 0 0 $32'
 });
 
 const Column = styled("div", {

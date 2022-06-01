@@ -24,6 +24,7 @@ export const Container = styled("div", {
   justifyContent: "space-between",
   width: "240px",
   height: "fit-content",
+  maxHeight: '90vh',
   backgroundColor: "$black60",
   boxSizing: "border-box",
   border: "3px solid #000",
