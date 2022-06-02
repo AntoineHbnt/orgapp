@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Button from "../../atoms/Button/Button";
+import CardHeader from "../../atoms/CardHeader/CardHeader";
 import { CheckListCount } from "../../atoms/CheckListCount/CheckListCount";
 import { DotMenuIcon } from "../../atoms/icons/DotMenu";
 import Tag from "../../atoms/Tag/Tag";
 import TaskCardSettings from "../TaskCardSettings/TaskCardSettings";
 import {
   Card,
-  CardHeader,
   cardModalStyle,
   CardOption,
   ModalBackground,
@@ -29,7 +29,8 @@ const TagList = ({ tags }) => {
   );
 };
 
-const TaskCard = ({ listId, taskId, label, tags, checkList, picture }) => {
+const TaskCard = ({ listId, task }) => {
+  const {tags, checkList, picture} = task
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const handleSettingEvent = (e) => {
@@ -45,7 +46,7 @@ const TaskCard = ({ listId, taskId, label, tags, checkList, picture }) => {
           {tags && <TagList tags={tags} />}
           {checkList && <CheckListCount checkList={checkList} />}
         </CardOption>
-        <TaskCardSettings label={label} taskId={taskId} listId={listId} tags={tags}/>
+        <TaskCardSettings listId={listId} task={task} tags={tags}/>
       </Card>
       <ModalBackground onClick={() => setIsModalOpen(false)} />
     </>
@@ -56,8 +57,7 @@ const TaskCard = ({ listId, taskId, label, tags, checkList, picture }) => {
         {tags && <TagList tags={tags} />}
         {checkList && <CheckListCount checkList={checkList} />}
       </CardOption>
-      <CardHeader>
-        {label}
+      <CardHeader listId={listId} task={task} css={{backgroundColor: task.color}}>
         <Button
           icon={<DotMenuIcon />}
           css={settingsButtonStyle}

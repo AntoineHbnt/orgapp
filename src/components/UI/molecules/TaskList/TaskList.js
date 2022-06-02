@@ -19,15 +19,11 @@ const TaskList = ({ listId, tasks, label }) => {
 
   const tasksArray = tasks.length > 0 && (
     <List>
-      {tasks.map(({ id, label, picture, tags, checkList }, index) => (
+      {tasks.map((task, index) => (
         <TaskCard
-          key={id}
+          key={task.id}
+          task={task}
           listId={listId}
-          taskId={id}
-          label={label}
-          picture={picture}
-          tags={tags}
-          checkList={checkList}
         />
       ))}
     </List>

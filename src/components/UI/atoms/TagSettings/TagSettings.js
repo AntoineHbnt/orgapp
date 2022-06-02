@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeTagColor, changeTagLabel } from "../../../../features/tasks/tasksLists/tasksListsSlice";
+import {
+  changeTagColor,
+  changeTagLabel,
+  deleteTag,
+} from "../../../../features/tasks/tasksLists/tasksListsSlice";
 import Button from "../Button/Button";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import BucketIcon from "../icons/Bucket";
+import TrashIcon from "../icons/Trash";
 import InputLabel from "../InputLabel/InputLabel";
-import { Row, settingsButtonStyle, TagItem } from "./TagSettings.styles";
+import {
+  ButtonRow,
+  Row,
+  settingsButtonStyle,
+  TagItem,
+} from "./TagSettings.styles";
 
 const TagSettings = ({ listId, taskId, tag }) => {
   const dispatch = useDispatch();
@@ -22,28 +32,39 @@ const TagSettings = ({ listId, taskId, tag }) => {
   };
 
   const handleTagColorChange = (color) => {
-      setColor(color);
+    setColor(color);
+    dispatch(changeTagColor({ listId, taskId, tagId: tag.id, color }));
+    handlePicker();
+  };
 
-      dispatch(
-          changeTagColor({ listId, taskId, tagId: tag.id, color })
-      )
-  }
+  const handleTagDelete = (e) => {
+    dispatch(deleteTag({ listId, taskId, tagId: tag.id }));
+  };
+
+  const handlePicker = () => {
+    setIsPickerActive((isPickerActive) => !isPickerActive);
+  };
 
   return (
     <TagItem key={tag.id} css={{ backgroundColor: color }}>
       <Row css={{ width: "100%" }}>
         <InputLabel
-          value={tag.label.toUpperCase()}
+          value={label.toUpperCase()}
           onChange={(e) => handleTagLabelChange(e)}
           css={{ fontWeight: "700" }}
         />
-        <Button
-          icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
-          css={settingsButtonStyle}
-          onClick={(e) =>
-            setIsPickerActive((isPickerActive) => !isPickerActive)
-          }
-        />
+        <ButtonRow>
+          <Button
+            icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
+            css={settingsButtonStyle}
+            onClick={(e) => handlePicker()}
+          />
+          <Button
+            icon={<TrashIcon css={{ transform: "scale(1.5)" }} />}
+            css={settingsButtonStyle}
+            onClick={(e) => handleTagDelete(e)}
+          />
+        </ButtonRow>
       </Row>
       {isPickerActive && (
         <ColorPicker

@@ -22,6 +22,11 @@ export const TagItem = styled("div", {
     padding: "$4",
   });
 
+  export const ButtonRow = styled("div", {
+    display: 'flex',
+    flexDirection: 'row',
+  })
+
   export const settingsButtonStyle = {
     aspectRatio: "1/1",
     display: "block",

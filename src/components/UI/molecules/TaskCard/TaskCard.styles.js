@@ -48,19 +48,6 @@ export const CardOption = styled("div", {
   position: "relative",
 });
 
-export const CardHeader = styled("label", {
-  justifyContent: "space-between",
-  display: "flex",
-  alignItems: "center",
-  color: "$primary",
-  height: "$32",
-  boxSizing: "border-box",
-  fontSize: "$16",
-  fontWeight: "700",
-  padding: "6px",
-  backgroundColor: "$white",
-  border: "3px solid #000",
-});
 
 export const TagRow = styled("div", {
   display: "flex",

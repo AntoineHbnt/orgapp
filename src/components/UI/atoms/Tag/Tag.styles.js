@@ -6,7 +6,7 @@ export const Container = styled("div",{
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '0.5rem',
+    fontSize: '0.75rem',
     fontWeight: '700',
     boxSizing: 'border-box',
     backgroundColor: 'white',

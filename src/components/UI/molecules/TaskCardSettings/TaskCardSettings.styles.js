@@ -18,13 +18,19 @@ export const CardContent = styled("div", {
   padding: "$4",
 });
 
+export const RowButton = styled("div", {
+  display: 'flex',
+  flexDirection: 'row'
+})
+
 export const Row = styled("div", {
+  width: '100%',
+  padding: "6px",
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
+  justifyContent: 'space-between',
   alignItems: "center",
   boxSizing: "border-box",
-  padding: "$4",
 });
 
 export const Category = styled("div", {

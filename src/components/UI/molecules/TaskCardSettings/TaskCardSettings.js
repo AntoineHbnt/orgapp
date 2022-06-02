@@ -10,57 +10,53 @@ import {
 } from "./TaskCardSettings.styles";
 import { AddCrossIcon } from "../../atoms/icons/AddCross";
 import Button from "../../atoms/Button/Button";
-import { CardHeader } from "../TaskCard/TaskCard.styles";
-import InputLabel from "../../atoms/InputLabel/InputLabel";
 import { useDispatch } from "react-redux";
 import {
-  changeTaskLabel,
+  addTag,
   deleteTask,
 } from "../../../../features/tasks/tasksLists/tasksListsSlice";
 import BucketIcon from "../../atoms/icons/Bucket";
 import TrashIcon from "../../atoms/icons/Trash";
 import TagSettings from "../../atoms/TagSettings/TagSettings";
+import CardHeader from "../../atoms/CardHeader/CardHeader";
 
-const TaskCardSettings = ({ label, taskId, listId, tags }) => {
-  const [cardLabel, setCardLabel] = useState(label);
+const TaskCardSettings = ({ task, listId, tags }) => {
+  
+  const [isPickerActive, setIsPickerActive] = useState(false);
+  const taskId = task.id;
   const dispatch = useDispatch();
-
-  const handleLabelChange = (e) => {
-    setCardLabel(e.target.value);
-    dispatch(changeTaskLabel({ listId, taskId, label: e.target.value }));
-  };
 
   const handleDeleteEvent = (e) => {
     dispatch(deleteTask({ listId, taskId }));
   };
 
+  const handleAddTag = (e) => {
+    dispatch(addTag({ listId, taskId }));
+  };
+
+  const handlePicker = (e) => {
+    setIsPickerActive(isPickerActive => !isPickerActive)
+  };
 
   const tagList =
     tags.length > 0 &&
     tags.map((tag) => (
-      <TagSettings key={tag.id} listId={listId} taskId={taskId} tag={tag}/>
+      <TagSettings key={tag.id} listId={listId} taskId={taskId} tag={tag} />
     ));
 
   return (
     <Container>
-      <CardHeader>
-        <InputLabel
-          value={cardLabel}
-          onChange={(e) => handleLabelChange(e)}
-          css={{ fontWeight: "700" }}
+      <CardHeader listId={listId} task={task} css={{ backgroundColor: task.color }} pickerActive={isPickerActive} handlePicker={() => handlePicker()}>
+        <Button
+          icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
+          css={settingsButtonStyle}
+          onClick={(e) => handlePicker(e)}
         />
-        <Row>
-          <Button
-            icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
-            css={settingsButtonStyle}
-            onClick={(e) => {}}
-          />
-          <Button
-            icon={<TrashIcon css={{ transform: "scale(1.5)" }} />}
-            css={settingsButtonStyle}
-            onClick={(e) => handleDeleteEvent(e)}
-          />
-        </Row>
+        <Button
+          icon={<TrashIcon css={{ transform: "scale(1.5)" }} />}
+          css={settingsButtonStyle}
+          onClick={(e) => handleDeleteEvent(e)}
+        />
       </CardHeader>
       <CardContent>
         <Category>
@@ -69,7 +65,7 @@ const TaskCardSettings = ({ label, taskId, listId, tags }) => {
             <Button
               icon={<AddCrossIcon />}
               css={settingsButtonStyle}
-              onClick={(e) => {}}
+              onClick={(e) => handleAddTag(e)}
             />
           </Row>
           <CategoryItemsList>{tagList}</CategoryItemsList>
