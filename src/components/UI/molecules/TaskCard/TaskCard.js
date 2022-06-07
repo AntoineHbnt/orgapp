@@ -11,7 +11,6 @@ import {
   CardOption,
   ModalBackground,
   PictureContainer,
-  settingsButtonStyle,
   TagRow,
 } from "./TaskCard.styles";
 
@@ -31,14 +30,14 @@ const TagList = ({ tags }) => {
 
 const TaskCard = ({ listId, task }) => {
   const {tags, checkList, picture} = task
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSettingActive, setIsSettingActive] = useState(false);
   
   const handleSettingEvent = (e) => {
-    setIsModalOpen(() => true);
+    setIsSettingActive(() => true);
   };
 
 
-  return isModalOpen ? (
+  return isSettingActive ? (
     <>
       <Card css={ cardModalStyle}>
         {picture && <PictureContainer src={picture} />}
@@ -48,7 +47,7 @@ const TaskCard = ({ listId, task }) => {
         </CardOption>
         <TaskCardSettings listId={listId} task={task} tags={tags}/>
       </Card>
-      <ModalBackground onClick={() => setIsModalOpen(false)} />
+      <ModalBackground onClick={() => setIsSettingActive(false)} />
     </>
   ) : (
     <Card>
@@ -57,10 +56,9 @@ const TaskCard = ({ listId, task }) => {
         {tags && <TagList tags={tags} />}
         {checkList && <CheckListCount checkList={checkList} />}
       </CardOption>
-      <CardHeader listId={listId} task={task} css={{backgroundColor: task.color}}>
+      <CardHeader listId={listId} task={task} color={task.color} label={task.label} css={{backgroundColor: task.color}}>
         <Button
           icon={<DotMenuIcon />}
-          css={settingsButtonStyle}
           onClick={(e) => handleSettingEvent(e)}
         />
       </CardHeader>

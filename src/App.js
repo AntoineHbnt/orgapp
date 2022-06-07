@@ -5,9 +5,9 @@ const Container = styled("div", {
   fontFamily: "$glory",
   width: "100%",
   height: "100%",
-  backgroundColor: "$secondary",
   display: "flex",
-  margin: '$32 0 0 $32'
+  padding: '$32 0 0 $32',
+  boxSizing: 'border-box'
 });
 
 const Column = styled("div", {

@@ -5,7 +5,7 @@ import { DotButton } from "./TaskSettings.styles";
 const TaskSettings = () => {
   return (
     <DotButton>
-      <DotMenuIcon css={{fill : '$secondary'}} />
+      <DotMenuIcon />
     </DotButton>
   );
 };

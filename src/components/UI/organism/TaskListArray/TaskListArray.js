@@ -8,7 +8,7 @@ const TaskListArray = () => {
   const tasksLists = useSelector((state) => state.tasksLists)
 
   const array = tasksLists.map((tasksList) => (
-    <TaskList key={tasksList.id} listId={tasksList.id} label={tasksList.label} tasks={tasksList.tasks} />
+    <TaskList key={tasksList.id} taskList={tasksList} tasks={tasksList.tasks} />
   ));
 
   return (

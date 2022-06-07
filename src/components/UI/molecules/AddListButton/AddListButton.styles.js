@@ -63,7 +63,6 @@ export const Form = styled("form", {
   overflow: 'hidden',
   height: 'fit-content',
   boxSizing: "border-box",
-  backgroundColor: "$primary",
   borderRadius: "$1",
   padding: "$8",
   gap: "$2",

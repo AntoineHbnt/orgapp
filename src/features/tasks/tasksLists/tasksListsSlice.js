@@ -10,9 +10,9 @@ const tasksListsSlice = createSlice({
   name: "taskslists",
   initialState,
   reducers: {
-    changeTasksListLabel(state, action) {
-      const { id, label } = action.payload;
-      const tasksList = state.find((elem) => elem.id === id);
+    changeListLabel(state, action) {
+      const { listId, label } = action.payload;
+      const tasksList = state.find((elem) => elem.id === listId);
 
       if (tasksList) {
         tasksList.label = label;
@@ -20,14 +20,38 @@ const tasksListsSlice = createSlice({
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
     },
-    addTaskList(state, action) {
+    addList(state, action) {
       state.push({
         id: nanoid(),
         label: action.payload.label,
         tasks: [],
+        color: {
+          header: '$white',
+          content: '$white'
+        },
       });
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
+    },
+    changeListHeaderColor(state, action){
+      const { listId, color } = action.payload;
+      const list = state.find((elem) => elem.id === listId);
+
+      console.log(listId, color);
+
+      if(list){
+        list.color.header = color
+      }
+    },
+    changeListContentColor(state, action){
+      const { listId, color } = action.payload;
+      const list = state.find((elem) => elem.id === listId);
+
+      console.log(listId, color);
+
+      if(list){
+        list.color.content = color
+      }
     },
     changeTaskLabel(state, action) {
       const { listId, taskId, label } = action.payload;
@@ -48,6 +72,7 @@ const tasksListsSlice = createSlice({
       list.tasks.push({
         ...task,
         id: nanoid(),
+        tags: []
       });
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
@@ -127,17 +152,18 @@ const tasksListsSlice = createSlice({
 });
 
 export const {
-  addTaskList,
+  addList,
+  changeListLabel,
+  changeListHeaderColor,
+  changeListContentColor,
   addTask,
   deleteTask,
   changeTaskColor,
+  changeTaskLabel,
   addTag,
   deleteTag,
   changeTagLabel,
   changeTagColor,
-  getTasksLists,
-  changeTasksListLabel,
-  changeTaskLabel,
 } = tasksListsSlice.actions;
 
 export default tasksListsSlice.reducer;

@@ -1,57 +1,40 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { changeTasksListLabel } from "../../../../features/tasks/tasksLists/tasksListsSlice";
+import Button from "../../atoms/Button/Button";
+import CardHeader from "../../atoms/CardHeader/CardHeader";
 import { DotMenuIcon } from "../../atoms/icons/DotMenu";
-import InputLabel from "../../atoms/InputLabel/InputLabel";
 import AddCardButton from "../AddCardButton/AddCardButton";
 import TaskCard from "../TaskCard/TaskCard";
-import {
-  Button,
-  Container,
-  Footer,
-  Header,
-  List,
-} from "./TaskList.styles";
+import { Container, Content, Footer, List } from "./TaskList.styles";
+import TaskListSettings from "../TaskListSettings/TaskListSettings";
 
-const TaskList = ({ listId, tasks, label }) => {
-  const dispatch = useDispatch();
-  const [title, setTitle] = useState(label ? label : "Saisissez le titre de la liste");
+const TaskList = ({ taskList, tasks }) => {
+  const [isSettingActive, setIsSettingActive] = useState(false);
+
+  const handleSettingEvent = () => {
+    setIsSettingActive((isSettingActive) => !isSettingActive);
+  };
 
   const tasksArray = tasks.length > 0 && (
     <List>
-      {tasks.map((task, index) => (
-        <TaskCard
-          key={task.id}
-          task={task}
-          listId={listId}
-        />
+      {tasks.map((task) => (
+        <TaskCard key={task.id} task={task} listId={taskList.id} />
       ))}
     </List>
-  )
-  
-
-  const handleChange = (e) => {
-    setTitle(() => e.target.value);
-    dispatch(changeTasksListLabel({listId, label: e.target.value}));
-  }
+  );
 
   return (
-    <Container>
-      <Header>
-        <InputLabel value={title} css={{fontWeight: '700', whiteSpace:'nowrap'}} onChange={e => handleChange(e)} />
-        <Button
-          css={{
-            aspectRatio: "1/1",
-            width: "16px",
-            "& > svg": { transform: "scale(1.5)" },
-          }}
-        >
-          <DotMenuIcon />
-        </Button>
-      </Header>
-      {tasksArray}
+    <Container css={{ backgroundColor: taskList.color.content }}>
+      <CardHeader
+        listId={taskList.id}
+        label={taskList.label}
+        css={{ padding: "$4 $8", backgroundColor: taskList.color.header }}
+      >
+        <Button icon={<DotMenuIcon />} onClick={(e) => handleSettingEvent()} />
+        {isSettingActive && <TaskListSettings listId={taskList.id} headerColor={taskList.color.header} contentColor={taskList.color.content} />}
+      </CardHeader>
+      <Content>{tasksArray}</Content>
       <Footer>
-        <AddCardButton listId={listId} />
+        <AddCardButton listId={taskList.id} />
       </Footer>
     </Container>
   );

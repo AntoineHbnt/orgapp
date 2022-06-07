@@ -11,15 +11,4 @@ export const DotButton = styled("div", {
   width: "1rem",
   height: "1rem",
   transition: ".1s ease-in-out",
-
-  "& > svg": {
-    fill: "$black25",
-  },
-
-  "&:hover": {
-    backgroundColor: "$black25",
-    "& > svg": {
-      fill: "$black50",
-    },
-  },
 });

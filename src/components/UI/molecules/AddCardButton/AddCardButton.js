@@ -14,12 +14,12 @@ import { AddCrossIcon } from "../../atoms/icons/AddCross";
 
 const AddCardButton = ({ listId }) => {
   const [isFocus, setIsFocus] = useState(false);
-  const [label, setLabel] = useState("");
+  const [label, setLabel] = useState("Nouvelle tâche");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask({ id: listId, task: { label } }));
+    dispatch(addTask({ id: listId, task: { label: label != "" ? label : "Nouvelle tâche" } }));
     setLabel(() => "");
   };
 
@@ -29,6 +29,7 @@ const AddCardButton = ({ listId }) => {
     lineHeight: "$14",
     padding: "$4 $8",
     fontSize: "$12",
+    backgroundColor: '$white'
   };
 
   const AddButton = () => (

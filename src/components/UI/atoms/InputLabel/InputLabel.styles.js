@@ -24,6 +24,6 @@ export const Label = styled("span", {
   fontWeight: "400",
   boxSizing: "border-box",
   fontSize: "$4",
-  color: "$secondary",
   padding: "$1",
+  whiteSpace:'nowrap'
 });

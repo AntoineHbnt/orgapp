@@ -58,7 +58,6 @@ export const TagRow = styled("div", {
 export const PictureContainer = styled("img", {
   width: "100%",
   height: "160px",
-  backgroundColor: "$black25",
   borderRadius: "$1 $1 0px 0px",
   marginBottom: "-18px",
   boxSizing: "border-box",
@@ -94,16 +93,4 @@ export const cardModalStyle = {
   "&:hover": { transform: "translate(0)" },
 };
 
-export const settingsButtonStyle = {
-  aspectRatio: "1/1",
-  display: "block",
-  width: "fit-content",
-  border: "0px",
-  transition: "all .1s ease-in",
-  "&:hover": {
-    backgroundColor: "rgba(0,0,0,0.05)",
-  },
-  "& > svg": {
-    transform: 'scale(1.5)'
-  }
-};
+

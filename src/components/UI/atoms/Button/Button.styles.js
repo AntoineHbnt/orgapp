@@ -9,14 +9,9 @@ export const StyledButton = styled("button", {
   boxSizing: "border-box",
   width: "fit-content",
   height: "fit-content",
-  backgroundColor: "$secondary",
   cursor: "pointer",
-  color: "$primary",
-  border: "3px solid #000",
-
-  "& > svg": {
-    fill: "$primary",
-  },
+  border: "0",
+  backgroundColor: 'transparent'
 });
 
 export const StyledLabel = styled("span", {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Color, Container } from "./ColorPicker.styles";
 
-const ColorPicker = ({tagId, setColor }) => {
+const ColorPicker = ({ setColor, css }) => {
   const colors = [
     "$yellow",
     "$orange",
@@ -17,10 +17,10 @@ const ColorPicker = ({tagId, setColor }) => {
   }
 
   return (
-    <Container>
+    <Container css={css}>
       {colors.map((color, i) => {
         return <Color
-            key={`${tagId}-c${i}`}
+            key={`c${i}`}
           css={{ backgroundColor: color }}
           onClick={() => handlePick(color)}
         />;

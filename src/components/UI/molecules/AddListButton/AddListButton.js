@@ -4,7 +4,7 @@ import Button from "../../atoms/Button/Button";
 import { AddCrossIcon } from "../../atoms/icons/AddCross";
 import InputLabel from "../../atoms/InputLabel/InputLabel";
 import { ButtonRow, Container, Form, InputContainer } from "./AddListButton.styles";
-import { addTaskList } from "../../../../features/tasks/tasksLists/tasksListsSlice";
+import { addList } from "../../../../features/tasks/tasksLists/tasksListsSlice";
 
 const AddListButton = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const AddListButton = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTaskList({ label }));
+    dispatch(addList({ label }));
     setLabel("Saisissez le titre de la liste");
   };
 

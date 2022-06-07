@@ -6,7 +6,6 @@ export const Container = styled("div", {
   width: "100%",
   height: "fit-content",
   boxSizing: "border-box",
-  marginTop: "-3px",
   backgroundColor: "$white",
 });
 
@@ -50,21 +49,9 @@ export const CategoryItem = styled("li", {
   listStyle: "none",
 });
 
-
-
 export const Title = styled("span", {
   fontSize: "$16",
   fontWeight: "700",
   lineHeight: "$18",
 });
 
-export const settingsButtonStyle = {
-  aspectRatio: "1/1",
-  display: "block",
-  width: "fit-content",
-  border: "0px",
-  transition: "all .1s ease-in",
-  "&:hover": {
-    backgroundColor: "rgba(0,0,0,0.05)",
-  },
-};

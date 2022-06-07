@@ -15,23 +15,14 @@ export const Container = styled("div", {
   justifyContent: "space-between",
   boxSizing: "border-box",
   padding: "12px 18px",
-  border: "3px solid $black50",
+  border: "3px solid $black",
   borderRadius: "$1",
-  color: "$black25",
   transition: '.1s all ease',
-  "& svg": {
-    fill: "$primary",
-  },
   variants: {
     disabled: {
       true: {
         opacity: "50%",
       },
-    },
-    focus: {
-      true: {
-        borderColor: '$primary'
-      }
     },
     valid: {
       true: {
@@ -60,7 +51,6 @@ export const StyledInput = styled("input", {
   border: 'none',
   backgroundColor: 'transparent',
   padding: '0',
-  color: '$primary',
   fontFamily: '$glory',
   fontWeight: "300",
   fontSize: "$6",

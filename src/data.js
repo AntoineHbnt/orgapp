@@ -3,6 +3,10 @@ export const taskLists = [
     id: 1,
     position: 0,
     label: 'A faire',
+    color: {
+      header: '$blue',
+      content: '$red'
+    },
     tasks: [
       {
         id: 10,
@@ -32,6 +36,10 @@ export const taskLists = [
     id: 2,
     position: 1,
     label: 'En cour',
+    color: {
+      header: '$white',
+      content: '$white'
+    },
     tasks: [
       {
         id: 21,

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
+  Background,
   CardContent,
   Category,
   CategoryItemsList,
   Container,
   Row,
-  settingsButtonStyle,
   Title,
 } from "./TaskCardSettings.styles";
 import { AddCrossIcon } from "../../atoms/icons/AddCross";
@@ -39,22 +39,20 @@ const TaskCardSettings = ({ task, listId, tags }) => {
   };
 
   const tagList =
-    tags.length > 0 &&
+    tags &&
     tags.map((tag) => (
       <TagSettings key={tag.id} listId={listId} taskId={taskId} tag={tag} />
     ));
 
   return (
     <Container>
-      <CardHeader listId={listId} task={task} css={{ backgroundColor: task.color }} pickerActive={isPickerActive} handlePicker={() => handlePicker()}>
+      <CardHeader listId={listId} task={task} label={task.label} color={task.color}  css={{ backgroundColor: task.color }} pickerActive={isPickerActive} handlePicker={() => handlePicker()}>
         <Button
           icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
-          css={settingsButtonStyle}
           onClick={(e) => handlePicker(e)}
         />
         <Button
           icon={<TrashIcon css={{ transform: "scale(1.5)" }} />}
-          css={settingsButtonStyle}
           onClick={(e) => handleDeleteEvent(e)}
         />
       </CardHeader>
@@ -64,7 +62,6 @@ const TaskCardSettings = ({ task, listId, tags }) => {
             <Title>Étiquettes</Title>
             <Button
               icon={<AddCrossIcon />}
-              css={settingsButtonStyle}
               onClick={(e) => handleAddTag(e)}
             />
           </Row>
@@ -75,7 +72,6 @@ const TaskCardSettings = ({ task, listId, tags }) => {
             <Title>CheckList</Title>
             <Button
               icon={<AddCrossIcon />}
-              css={settingsButtonStyle}
               onClick={(e) => {}}
             />
           </Row>

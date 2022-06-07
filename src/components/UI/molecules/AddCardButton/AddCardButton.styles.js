@@ -72,7 +72,6 @@ export const Form = styled("form", {
 
 export const TextContainer = styled("div", {
   borderRadius: "$1",
-  backgroundColor: "$secondary",
   padding: "$8",
 });
 
@@ -99,5 +98,4 @@ export const ButtonLabel = styled("span", {
   fontWeight: "300",
   fontSize: "$6",
   lineHeight: "$5",
-  color: "$secondary",
 });

@@ -10,7 +10,7 @@ export const Container = styled("div",{
     fontWeight: '700',
     boxSizing: 'border-box',
     backgroundColor: 'white',
-    border: '3px solid #000',
+    border: '3px solid $black',
     marginBottom: '-3px',
     zIndex: '0',
     padding: '0 $4',
