@@ -64,7 +64,6 @@ export const Form = styled("form", {
   height: 'fit-content',
   boxSizing: "border-box",
   borderRadius: "$1",
-  padding: "$8",
   gap: "$2",
  });
 
@@ -72,11 +71,14 @@ export const InputContainer = styled("div", {
   flexDirection: "row",
   height: "32px",
   display: "flex",
+  padding: '$4 $16', 
   alignItems: "center",
+  borderBottom: '3px solid $black'
 });
 
 export const ButtonRow = styled("div", {
   flexDirection: "row",
   display: "flex",
+  padding: '$8', 
   justifyContent: "space-between",
 });

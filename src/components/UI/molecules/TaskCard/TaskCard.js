@@ -56,7 +56,7 @@ const TaskCard = ({ listId, task }) => {
         {tags && <TagList tags={tags} />}
         {checkList && <CheckListCount checkList={checkList} />}
       </CardOption>
-      <CardHeader listId={listId} task={task} color={task.color} label={task.label} css={{backgroundColor: task.color}}>
+      <CardHeader listId={listId} task={task} color={task.color ? task.color : '$white'} label={task.label} css={{backgroundColor: task.color}}>
         <Button
           icon={<DotMenuIcon />}
           onClick={(e) => handleSettingEvent(e)}

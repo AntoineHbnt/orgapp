@@ -35,6 +35,7 @@ export const Container = styled("div", {
   height: "fit-content",
   width: "100%",
   overflow: "hidden",
+  background: 'white',
 
   "&.button": {
     display: "flex",
