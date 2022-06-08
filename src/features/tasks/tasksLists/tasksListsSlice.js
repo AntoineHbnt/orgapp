@@ -26,32 +26,39 @@ const tasksListsSlice = createSlice({
         label: action.payload.label,
         tasks: [],
         color: {
-          header: '$white',
-          content: '$white'
+          header: "$white",
+          content: "$white",
         },
       });
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
     },
-    changeListHeaderColor(state, action){
-      const { listId, color } = action.payload;
-      const list = state.find((elem) => elem.id === listId);
+    deleteList(state, action) {
+      const { listId } = action.payload;
+      const newState = state.filter((elem) => elem.id !== listId);
 
-      console.log(listId, color);
-
-      if(list){
-        list.color.header = color
-      }
+      localStorage.setItem("tasksLists", JSON.stringify(newState));
+      return newState
     },
-    changeListContentColor(state, action){
+    changeListHeaderColor(state, action) {
+      const { listId, color } = action.payload;
+      const list = state.find((elem) => elem.id === listId);
+
+      if (list) {
+        list.color.header = color;
+      }
+      localStorage.setItem("tasksLists", JSON.stringify(state));
+    },
+    changeListContentColor(state, action) {
       const { listId, color } = action.payload;
       const list = state.find((elem) => elem.id === listId);
 
       console.log(listId, color);
 
-      if(list){
-        list.color.content = color
+      if (list) {
+        list.color.content = color;
       }
+      localStorage.setItem("tasksLists", JSON.stringify(state));
     },
     changeTaskLabel(state, action) {
       const { listId, taskId, label } = action.payload;
@@ -72,7 +79,7 @@ const tasksListsSlice = createSlice({
       list.tasks.push({
         ...task,
         id: nanoid(),
-        tags: []
+        tags: [],
       });
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
@@ -81,28 +88,26 @@ const tasksListsSlice = createSlice({
       const { listId, taskId } = action.payload;
       const list = state.find((elem) => elem.id === listId);
 
+
       if (list) {
         list.tasks = list.tasks.filter((elem) => elem.id !== taskId);
       }
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
     },
-    changeTaskColor(state, action){
+    changeTaskColor(state, action) {
       const { listId, taskId, color } = action.payload;
       const list = state.find((elem) => elem.id === listId);
       const task = list && list.tasks.find((elem) => elem.id === taskId);
 
-
-      if(task){
-        task.color = color
+      if (task) {
+        task.color = color;
       }
-
     },
     addTag(state, action) {
       const { listId, taskId } = action.payload;
       const list = state.find((elem) => elem.id === listId);
       const task = list && list.tasks.find((elem) => elem.id === taskId);
-
 
       if (task) {
         task.tags.push({
@@ -153,6 +158,7 @@ const tasksListsSlice = createSlice({
 
 export const {
   addList,
+  deleteList,
   changeListLabel,
   changeListHeaderColor,
   changeListContentColor,
