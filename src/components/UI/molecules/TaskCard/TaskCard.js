@@ -45,7 +45,7 @@ const TaskCard = ({ listId, task }) => {
           {tags && <TagList tags={tags} />}
           {checkList && <CheckListCount checkList={checkList} />}
         </CardOption>
-        <TaskCardSettings listId={listId} task={task} tags={tags}/>
+        <TaskCardSettings listId={listId} task={task} tags={tags} checkList={checkList}/>
       </Card>
       <ModalBackground onClick={() => setIsSettingActive(false)} />
     </>

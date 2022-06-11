@@ -12,6 +12,7 @@ import { AddCrossIcon } from "../../atoms/icons/AddCross";
 import Button from "../../atoms/Button/Button";
 import { useDispatch } from "react-redux";
 import {
+  addCheckbox,
   addTag,
   deleteTask,
 } from "../../../../features/tasks/tasksLists/tasksListsSlice";
@@ -19,23 +20,27 @@ import BucketIcon from "../../atoms/icons/Bucket";
 import TrashIcon from "../../atoms/icons/Trash";
 import TagSettings from "../../atoms/TagSettings/TagSettings";
 import CardHeader from "../../atoms/CardHeader/CardHeader";
+import Checkbox from "../../atoms/Checkbox/Checkbox";
 
-const TaskCardSettings = ({ task, listId, tags }) => {
-  
+const TaskCardSettings = ({ task, listId, tags, checkList }) => {
   const [isPickerActive, setIsPickerActive] = useState(false);
   const taskId = task.id;
   const dispatch = useDispatch();
 
-  const handleDeleteEvent = (e) => {
+  const handleDeleteEvent = () => {
     dispatch(deleteTask({ listId, taskId }));
   };
 
-  const handleAddTag = (e) => {
+  const handleAddTag = () => {
     dispatch(addTag({ listId, taskId }));
   };
 
-  const handlePicker = (e) => {
-    setIsPickerActive(isPickerActive => !isPickerActive)
+  const handleAddCheckbox = () => {
+    dispatch(addCheckbox({ listId, taskId }));
+  };
+
+  const handlePicker = () => {
+    setIsPickerActive((isPickerActive) => !isPickerActive);
   };
 
   const tagList =
@@ -44,26 +49,42 @@ const TaskCardSettings = ({ task, listId, tags }) => {
       <TagSettings key={tag.id} listId={listId} taskId={taskId} tag={tag} />
     ));
 
+  const checkboxList =
+    checkList &&
+    checkList.checkboxList.map((checkbox) => (
+      <Checkbox
+        key={checkbox.id}
+        listId={listId}
+        taskId={taskId}
+        checkbox={checkbox}
+      />
+    ));
+
   return (
     <Container>
-      <CardHeader listId={listId} task={task} label={task.label} color={task.color}  css={{ backgroundColor: task.color }} pickerActive={isPickerActive} handlePicker={() => handlePicker()}>
+      <CardHeader
+        listId={listId}
+        task={task}
+        label={task.label}
+        color={task.color}
+        css={{ backgroundColor: task.color }}
+        pickerActive={isPickerActive}
+        handlePicker={() => handlePicker()}
+      >
         <Button
           icon={<BucketIcon css={{ transform: "scale(1.5)" }} />}
-          onClick={(e) => handlePicker(e)}
+          onClick={(e) => handlePicker()}
         />
         <Button
           icon={<TrashIcon css={{ transform: "scale(1.5)" }} />}
-          onClick={(e) => handleDeleteEvent(e)}
+          onClick={(e) => handleDeleteEvent()}
         />
       </CardHeader>
       <CardContent>
         <Category>
           <Row>
             <Title>Étiquettes</Title>
-            <Button
-              icon={<AddCrossIcon />}
-              onClick={(e) => handleAddTag(e)}
-            />
+            <Button icon={<AddCrossIcon />} onClick={(e) => handleAddTag()} />
           </Row>
           <CategoryItemsList>{tagList}</CategoryItemsList>
         </Category>
@@ -72,10 +93,10 @@ const TaskCardSettings = ({ task, listId, tags }) => {
             <Title>CheckList</Title>
             <Button
               icon={<AddCrossIcon />}
-              onClick={(e) => {}}
+              onClick={(e) => handleAddCheckbox()}
             />
           </Row>
-          <CategoryItemsList></CategoryItemsList>
+          <CategoryItemsList>{checkboxList}</CategoryItemsList>
         </Category>
       </CardContent>
     </Container>

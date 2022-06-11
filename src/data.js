@@ -16,8 +16,12 @@ export const taskLists = [
         picture:
           "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x300/acf5be3f99e4b0e667869b2f75593ab0/photo-1650892344024-fb34a919e258.jpg",
         checkList: {
-          done: [{}],
-          todo: [{}, {}],
+          color: '$white',
+          checkboxList: [
+            {id: '1234esfef5987',state: 'done', label: "Checkbox"},
+            {id: '12adzadaz987',state: 'todo', label: "Checkbox"},
+            {id: '1234vvdsfbvdf7',state: 'todo', label: "Checkbox"},
+          ]
         },
       },
       {
@@ -26,8 +30,8 @@ export const taskLists = [
         color: '$white',
         tags: [{ id: "ioazdqn", label: "tag1", color: "#fff" }],
         checkList: {
-          done: [{}],
-          todo: [{}, {}],
+          color: '$white',
+          checkboxList: [{state: 'done', label: "Checkbox"}]
         },
       },
     ],
@@ -47,8 +51,8 @@ export const taskLists = [
         color: '$white',
         tags: [{ id:"duzaiydzai", label: "tag1", color: "#FF5E5E" },{ id:"dzadaziudhnj", label: "tag2", color: "#fff" }],
         checkList: {
-          done: [{}],
-          todo: [{}, {}],
+          color: '$white',
+          checkboxList: [{id: '123465987',state: 'done', label: "Checkbox"}]
         },
       },
       {
@@ -59,8 +63,8 @@ export const taskLists = [
         picture:
           "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x300/acf5be3f99e4b0e667869b2f75593ab0/photo-1650892344024-fb34a919e258.jpg",
         checkList: {
-          done: [{}],
-          todo: [{}, {}],
+          color: '$white',
+          checkboxList: [{id: '12dqzd7', state: 'done', label: "Checkbox"}]
         },
       },
       {
@@ -71,8 +75,8 @@ export const taskLists = [
         picture:
           "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x300/acf5be3f99e4b0e667869b2f75593ab0/photo-1650892344024-fb34a919e258.jpg",
         checkList: {
-          done: [{}],
-          todo: [{}, {}],
+          color: '$white',
+          checkboxList: [{id: 'dzqddqzd125', state: 'done', label: "Checkbox"}]
         },
       },
     ],

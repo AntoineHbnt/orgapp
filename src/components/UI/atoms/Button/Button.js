@@ -7,7 +7,7 @@ const Button = ({ label, icon, css, onClick, type }) => {
   return (
     <StyledButton type={type ? type : ""} css={css} onClick={onClick}>
       {icon && icon}
-      <StyledLabel>{label}</StyledLabel>
+      {label && <StyledLabel>{label}</StyledLabel>}
     </StyledButton>
   );
 };
