@@ -6,6 +6,10 @@ export const Container = styled("div", {
     padding: '1rem',
     gap: '$16',
     flex: '1',
-    padding: '0 $3'
+    padding: '0 $3',
+
+    '@sm': {
+        flexDirection: 'column'
+    }
 })
 

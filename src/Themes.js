@@ -62,5 +62,8 @@ export const { styled, css } = createStitches({
     },
     zIndices: {},
     transitions: {},
+    media: {
+      sm: '(min-width: 640px)'
+    }
   },
 });

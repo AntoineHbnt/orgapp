@@ -12,7 +12,7 @@ const TaskListArray = () => {
   ));
 
   return (
-    <Container>
+    <Container align={{'@initial': 'row', '@sm': 'column'}}>
       {array}
       <AddListButton />
     </Container>
