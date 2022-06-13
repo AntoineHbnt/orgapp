@@ -29,6 +29,7 @@ export const taskLists = [
         label: "ceci est une tache",
         color: '$white',
         tags: [{ id: "ioazdqn", label: "tag1", color: "#fff" }],
+        picture: '',
         checkList: {
           color: '$white',
           checkboxList: [{state: 'done', label: "Checkbox"}]
@@ -50,6 +51,7 @@ export const taskLists = [
         label: "ceci est une tache",
         color: '$white',
         tags: [{ id:"duzaiydzai", label: "tag1", color: "#FF5E5E" },{ id:"dzadaziudhnj", label: "tag2", color: "#fff" }],
+        picture: '',
         checkList: {
           color: '$white',
           checkboxList: [{id: '123465987',state: 'done', label: "Checkbox"}]

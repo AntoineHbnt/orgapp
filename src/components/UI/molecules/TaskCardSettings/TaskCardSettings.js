@@ -21,6 +21,7 @@ import TrashIcon from "../../atoms/icons/Trash";
 import TagSettings from "../../atoms/TagSettings/TagSettings";
 import CardHeader from "../../atoms/CardHeader/CardHeader";
 import Checkbox from "../../atoms/Checkbox/Checkbox";
+import ImageSettings from "../ImageSettings/ImageSettings";
 
 const TaskCardSettings = ({ task, listId, tags, checkList }) => {
   const [isPickerActive, setIsPickerActive] = useState(false);
@@ -97,6 +98,12 @@ const TaskCardSettings = ({ task, listId, tags, checkList }) => {
             />
           </Row>
           <CategoryItemsList>{checkboxList}</CategoryItemsList>
+        </Category>
+        <Category>
+          <Row>
+            <Title>Image</Title>
+          </Row>
+          <CategoryItemsList><ImageSettings key={`${taskId}-imgSettings`} listId={listId} taskId={taskId} picture={task.picture}/></CategoryItemsList>
         </Category>
       </CardContent>
     </Container>

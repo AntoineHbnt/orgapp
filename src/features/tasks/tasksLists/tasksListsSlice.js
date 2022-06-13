@@ -6,23 +6,23 @@ const data = JSON.parse(localStorage.getItem("tasksLists"));
 
 const initialState = data ? data : taskLists;
 
-
 const findList = (state, listId) => {
   return state.find((elem) => elem.id === listId);
-}
+};
 
 const findTask = (state, listId, taskId) => {
-  return findList(state,listId).tasks.find((elem) => elem.id === taskId);
-}
+  return findList(state, listId).tasks.find((elem) => elem.id === taskId);
+};
 
 const findTag = (state, listId, taskId, tagId) => {
-  return findTask(state,listId, taskId).tags.find((elem) => elem.id === tagId);
-}
+  return findTask(state, listId, taskId).tags.find((elem) => elem.id === tagId);
+};
 
 const findCheckbox = (state, listId, taskId, checkboxId) => {
-  return findTask(state,listId, taskId).checkList.checkboxList.find(elem => elem.id === checkboxId);
-}
-
+  return findTask(state, listId, taskId).checkList.checkboxList.find(
+    (elem) => elem.id === checkboxId
+  );
+};
 
 const tasksListsSlice = createSlice({
   name: "taskslists",
@@ -96,6 +96,7 @@ const tasksListsSlice = createSlice({
         ...task,
         id: nanoid(),
         tags: [],
+        checkboxList: [],
       });
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
@@ -117,6 +118,28 @@ const tasksListsSlice = createSlice({
       if (task) {
         task.color = color;
       }
+
+      localStorage.setItem("tasksLists", JSON.stringify(state));
+    },
+    changeTaskImage(state, action) {
+      const { listId, taskId, base64 } = action.payload;
+      const task = findTask(state, listId, taskId);
+
+      if (task) {
+        task.picture = base64;
+      }
+
+      localStorage.setItem("tasksLists", JSON.stringify(state));
+    },
+    deleteTaskImage(state, action) {
+      const { listId, taskId, } = action.payload;
+      const task = findTask(state, listId, taskId);
+
+      if (task) {
+        task.picture = '';
+      }
+
+      localStorage.setItem("tasksLists", JSON.stringify(state));
     },
     addTag(state, action) {
       const { listId, taskId } = action.payload;
@@ -165,25 +188,26 @@ const tasksListsSlice = createSlice({
       const { listId, taskId } = action.payload;
       const task = findTask(state, listId, taskId);
 
-      if(task){
+      if (task) {
         task.checkList.checkboxList.push({
           id: nanoid(),
-          state: 'todo',
-          label: 'Chose à faire'
-        })
+          state: "todo",
+          label: "Chose à faire",
+        });
       }
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
-
     },
     deleteCheckbox(state, action) {
       const { listId, taskId, checkboxId } = action.payload;
       const task = findTask(state, listId, taskId);
 
-      if(task){
-        task.checkList.checkboxList = task.checkList.checkboxList.filter((elem) => {
-          return elem.id !== checkboxId
-        })
+      if (task) {
+        task.checkList.checkboxList = task.checkList.checkboxList.filter(
+          (elem) => {
+            return elem.id !== checkboxId;
+          }
+        );
       }
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
@@ -192,23 +216,22 @@ const tasksListsSlice = createSlice({
       const { listId, taskId, checkboxId } = action.payload;
       const checkbox = findCheckbox(state, listId, taskId, checkboxId);
 
-      if(checkbox){
-        checkbox.state = checkbox.state === 'done' ? 'todo' : 'done' 
+      if (checkbox) {
+        checkbox.state = checkbox.state === "done" ? "todo" : "done";
       }
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
     },
-    changeCheckboxLabel(state, action){
+    changeCheckboxLabel(state, action) {
       const { listId, taskId, checkboxId, label } = action.payload;
       const checkbox = findCheckbox(state, listId, taskId, checkboxId);
 
-      if(checkbox){
-        checkbox.label = label 
+      if (checkbox) {
+        checkbox.label = label;
       }
 
       localStorage.setItem("tasksLists", JSON.stringify(state));
-    }
-
+    },
   },
 });
 
@@ -220,6 +243,8 @@ export const {
   changeListContentColor,
   addTask,
   deleteTask,
+  changeTaskImage,
+  deleteTaskImage,
   changeTaskColor,
   changeTaskLabel,
   addTag,
@@ -229,7 +254,7 @@ export const {
   addCheckbox,
   deleteCheckbox,
   changeCheckboxState,
-  changeCheckboxLabel
+  changeCheckboxLabel,
 } = tasksListsSlice.actions;
 
 export default tasksListsSlice.reducer;

@@ -62,7 +62,7 @@ export const PictureContainer = styled("img", {
   marginBottom: "-18px",
   boxSizing: "border-box",
   border: "3px solid #000",
-  clip: "cover",
+  objectFit: 'cover',
 });
 
 //SETTING MODAL
