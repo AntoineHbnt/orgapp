@@ -53,7 +53,7 @@ const tasksListsSlice = createSlice({
     },
     deleteList(state, action) {
       const { listId } = action.payload;
-      const newState = findList(state, listId);
+      const newState = state.filter(elem => elem.id !== listId)
 
       localStorage.setItem("tasksLists", JSON.stringify(newState));
       return newState;
